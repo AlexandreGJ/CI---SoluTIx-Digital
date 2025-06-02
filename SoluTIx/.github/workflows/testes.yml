@@ -1,0 +1,32 @@
+# Nome do workflow que aparecerá na aba "Actions" do GitHub
+name: Testar código Python
+
+# Define quando o workflow será executado
+on:
+  # Executa quando houver um push (alteração de código) na branch principal
+  push:
+    branches: [ main ]
+  # Também executa se alguém abrir um pull request na branch main
+  pull_request:
+    branches: [ main ]
+
+# Define os trabalhos (jobs) que serão executados
+jobs:
+  test:
+    # Ambiente onde o teste será executado (um servidor Linux Ubuntu na nuvem)
+    runs-on: ubuntu-latest
+
+    steps:
+      # Etapa 1: Baixar o conteúdo do repositório para o ambiente de teste
+      - name: Baixar o código do repositório
+        uses: actions/checkout@v3
+
+      # Etapa 2: Instalar o Python 3.10 no ambiente de teste
+      - name: Configurar o ambiente com Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Etapa 3: Rodar o arquivo de teste (teste.py)
+      - name: Executar o teste automático
+        run: python teste.py
