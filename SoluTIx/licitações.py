@@ -11,5 +11,5 @@ def avaliar_proposta(notas):
 
 # Exemplo de uso:
 if __name__ == "__main__":
-    notas_exemplo = [8, 7.5, 9, 6]
+    notas_exemplo = [3, 3, 2, 2]
     print(f"Resultado: {avaliar_proposta(notas_exemplo)}")
